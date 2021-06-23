@@ -23,6 +23,8 @@ dependencies {
 	implementation 'org.projectlombok:lombok'
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.0'
+
+	implementation 'org.json:json:20190722'
 }
 
 test {
