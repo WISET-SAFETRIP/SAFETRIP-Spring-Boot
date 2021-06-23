@@ -10,4 +10,6 @@ public class SafeTripApplication {
 		SpringApplication.run(SafeTripApplication.class, args);
 	}
 
+
+
 }
