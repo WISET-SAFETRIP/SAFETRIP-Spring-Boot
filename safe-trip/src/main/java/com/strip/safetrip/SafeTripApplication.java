@@ -13,11 +13,8 @@ import java.net.URLEncoder;
 public class SafeTripApplication {
 
 	public static void main(String[] args) throws Exception {
-
-
 		SpringApplication.run(SafeTripApplication.class, args);
 	}
 
-
-
 }
+
