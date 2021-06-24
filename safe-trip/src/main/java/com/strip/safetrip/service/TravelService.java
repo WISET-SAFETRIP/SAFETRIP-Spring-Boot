@@ -4,6 +4,8 @@ import com.strip.safetrip.domain.Travel;
 import com.strip.safetrip.repository.TravelRepository;
 import com.strip.safetrip.tourApi.Requester;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -26,5 +28,9 @@ public class TravelService {
         list.addAll(requester.getAreaBasedList("Y", "A", 12, gu));
 
         travelRepository.saveAll(list);
+    }
+
+    public List<Travel> listByInsideAndFieldNo(boolean inside, int fieldNo, Pageable pageable) {
+        return travelRepository.findByInsideAndFieldNo(inside, fieldNo, pageable).getContent();
     }
 }

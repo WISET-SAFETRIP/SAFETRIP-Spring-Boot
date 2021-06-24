@@ -1,7 +1,8 @@
 package com.strip.safetrip.repository;
 
 import com.strip.safetrip.domain.Travel;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class JpaTravelRepository implements TravelRepository {
     @Override
     public <S extends Travel> List<S> saveAll(Iterable<S> entities) {
         for(Travel travel : entities) {
-            System.out.println(travel.getTravel_no());
+            System.out.println(travel.getTravelNo());
             em.persist(travel);
         }
         Iterator<S> iterator = entities.iterator();
@@ -28,5 +29,10 @@ public class JpaTravelRepository implements TravelRepository {
         }
 
         return list;
+    }
+
+    @Override
+    public <S extends Travel> Page<S> findByInsideAndFieldNo(boolean inside, int fieldNo, Pageable pageable) {
+        return null;
     }
 }

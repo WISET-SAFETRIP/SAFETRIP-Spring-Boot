@@ -7,24 +7,22 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity(name = "Travel")
-@Table(name = "travel", uniqueConstraints =
-        {@UniqueConstraint(name = "NO_UNIQUE", columnNames = {"travel_no"})})
 @Getter
 @Setter
 public class Travel {
     public Travel() {}
 
     @Id
-    private Long travel_no;
+    private Long travelNo;
 
     @Column(name = "star", nullable = true)
     private float star;
 
     @Column(name = "ppl_no", nullable = false)
-    private int ppl_no = 0;
+    private int pplNo = 0;
 
     @Column(name = "field_no", nullable = false)
-    private int field_no;
+    private int fieldNo;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -33,12 +31,12 @@ public class Travel {
     @Convert(converter = BooleanTo10Converter.class)
     private boolean inside;
 
-    public Long getTravel_no() {
-        return travel_no;
+    public Long getTravelNo() {
+        return travelNo;
     }
 
-    public void setTravel_no(Long travel_no) {
-        this.travel_no = travel_no;
+    public void setTravelNo(Long travelNo) {
+        this.travelNo = travelNo;
     }
 
     public float getStar() {
@@ -49,16 +47,16 @@ public class Travel {
         this.star = star;
     }
 
-    public int getPpl_no() {
-        return ppl_no;
+    public int getPplNo() {
+        return pplNo;
     }
 
-    public void setPpl_no(int ppl_no) {
-        this.ppl_no = ppl_no;
+    public void setPplNo(int pplNo) {
+        this.pplNo = pplNo;
     }
 
-    public int getField_no() {
-        return field_no;
+    public int getFieldNo() {
+        return fieldNo;
     }
 
     public boolean getInside() {
@@ -69,8 +67,8 @@ public class Travel {
         this.inside = inside;
     }
 
-    public void setField_no(int field_no) {
-        this.field_no = field_no;
+    public void setField_no(int fieldNo) {
+        this.fieldNo = fieldNo;
     }
 
     public String getName() {
