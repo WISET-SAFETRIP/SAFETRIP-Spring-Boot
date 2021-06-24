@@ -26,7 +26,7 @@ import java.net.URLEncoder;
 import java.util.List;
 
 @Controller
-@RequestMapping("/travels")
+@RequestMapping("/api/travels")
 public class TravelController {
 
     private final TravelService travelService;
