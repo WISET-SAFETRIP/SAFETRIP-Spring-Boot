@@ -3,8 +3,6 @@ package com.strip.safetrip.service;
 import com.strip.safetrip.domain.Travel;
 import com.strip.safetrip.repository.TravelRepository;
 import com.strip.safetrip.tourApi.Requester;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -24,6 +22,7 @@ public class TravelService {
         list.addAll(requester.getAreaBasedList("Y", "A", 38, gu));
         list.addAll(requester.getAreaBasedList("Y", "A", 39, gu));
         list.addAll(requester.getAreaBasedList("Y", "A", 12, gu));
+        list.addAll(requester.getAreaBasedList("Y", "A", 28, gu));
 
         travelRepository.saveAll(list);
     }

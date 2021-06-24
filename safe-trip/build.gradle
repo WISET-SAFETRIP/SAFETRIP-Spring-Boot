@@ -20,7 +20,9 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.projectlombok:lombok'
+//	implementation 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok:1.18.4'
+	annotationProcessor 'org.projectlombok:lombok:1.18.4'
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.0'
 

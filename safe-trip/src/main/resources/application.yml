@@ -1,0 +1,18 @@
+spring:
+  data:
+    rest:
+      basePath: /api
+      max-page-size: 10
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    password: 6599
+    url: jdbc:mariadb://localhost:3306/safe_trip?characterEncoding=UTF-8&serverTimezone=UTC
+    username: admin
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+

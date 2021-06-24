@@ -11,7 +11,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Requester {
@@ -70,7 +69,7 @@ public class Requester {
             t.setName(title);
             t.setTravel_no(id);
             t.setField_no(sigunguCode);
-            if (contentTypeId == 12) {
+            if (contentTypeId == 12 || contentTypeId == 28) {
                 t.setInside(false);
             } else {
                 t.setInside(true);

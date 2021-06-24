@@ -1,7 +1,6 @@
 package com.strip.safetrip.repository;
 
 import com.strip.safetrip.domain.Travel;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class JpaTravelRepository implements TravelRepository {
         while (iterator.hasNext()) {
             list.add(iterator.next());
         }
-
         return list;
     }
 }
