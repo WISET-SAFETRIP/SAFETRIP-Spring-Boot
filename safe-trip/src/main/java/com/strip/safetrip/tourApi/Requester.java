@@ -3,6 +3,7 @@ package com.strip.safetrip.tourApi;
 import com.strip.safetrip.domain.Travel;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.context.annotation.Bean;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -78,7 +79,7 @@ public class Requester {
         return list;
     }
 
-    public String getDetail(int travelNo, int contentTypeId) throws Exception {
+    public String getDetail(Long travelNo, int contentTypeId) throws Exception {
 
         String jsonString = this.getDetailIntro(travelNo, contentTypeId);
         JSONObject body = new JSONObject(jsonString).getJSONObject("response")
@@ -105,14 +106,15 @@ public class Requester {
         }
 
         JSONObject info = new JSONObject();
-        info.append("detailIntro", detailIntro).append("detailInfo", detailInfo).append("detailImage", detailImage);
+        String result = info.append("detailIntro", detailIntro)
+                .append("detailInfo", detailInfo)
+                .append("detailImage", detailImage)
+                .toString();
 
-        return null;
-
-
+        return result;
     }
 
-    private String getDetailIntro(int travelNo, int contentTypeId) throws Exception {
+    private String getDetailIntro(Long travelNo, int contentTypeId) throws Exception {
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"); /*URL*/
 
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode(key, "UTF-8")); /*공공데이터포털에서 발급받은 인증키*/
@@ -147,7 +149,7 @@ public class Requester {
         return sb.toString();
     }
 
-    private String getDetailInfo(int travelNo, int contentTypeId) throws Exception {
+    private String getDetailInfo(Long travelNo, int contentTypeId) throws Exception {
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo"); /*URL*/
 
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode(key, "UTF-8")); /*공공데이터포털에서 발급받은 인증키*/
@@ -182,7 +184,7 @@ public class Requester {
         return sb.toString();
     }
 
-    private String getDetailImage(int travelNo) throws Exception {
+    private String getDetailImage(Long travelNo) throws Exception {
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage"); /*URL*/
 
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode(key, "UTF-8")); /*공공데이터포털에서 발급받은 인증키*/
@@ -218,7 +220,4 @@ public class Requester {
         return sb.toString();
     }
 
-    public static void main(String[] args) throws Exception {
-        new Requester().getDetail(2643060, 39);
-    }
 }

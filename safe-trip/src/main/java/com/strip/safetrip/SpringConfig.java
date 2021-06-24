@@ -3,6 +3,7 @@ package com.strip.safetrip;
 import com.strip.safetrip.repository.JpaTravelRepository;
 import com.strip.safetrip.repository.TravelRepository;
 import com.strip.safetrip.service.TravelService;
+import com.strip.safetrip.tourApi.Requester;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,7 +17,9 @@ public class SpringConfig {
     private final EntityManager em;
     private final TravelRepository travelRepository;
 
-    public SpringConfig(DataSource dataSource, EntityManager em, TravelRepository travelRepository) {
+    public SpringConfig(DataSource dataSource,
+                        EntityManager em,
+                        TravelRepository travelRepository) {
         this.dataSource = dataSource;
         this.em = em;
         this.travelRepository = travelRepository;
@@ -24,7 +27,12 @@ public class SpringConfig {
 
     @Bean
     public TravelService travelService() {
-        return new TravelService(travelRepository);
+        return new TravelService(travelRepository, requester());
+    }
+
+    @Bean
+    public Requester requester() {
+        return new Requester();
     }
 
 }

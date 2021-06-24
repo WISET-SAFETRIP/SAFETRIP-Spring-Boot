@@ -16,8 +16,11 @@ public class TravelService {
 
     private final TravelRepository travelRepository;
 
-    public TravelService(TravelRepository travelRepository) {
+    private final Requester requester;
+
+    public TravelService(TravelRepository travelRepository, Requester requester) {
         this.travelRepository = travelRepository;
+        this.requester = requester;
     }
 
     public void add(int gu) throws Exception {
@@ -32,5 +35,9 @@ public class TravelService {
 
     public List<Travel> listByInsideAndFieldNo(boolean inside, int fieldNo, Pageable pageable) {
         return travelRepository.findByInsideAndFieldNo(inside, fieldNo, pageable).getContent();
+    }
+
+    public String listDetail(Long travelNo, Integer contentTypeId) throws Exception {
+        return requester.getDetail(travelNo, contentTypeId);
     }
 }

@@ -52,6 +52,12 @@ public class TravelController {
         return ResponseEntity.ok(travelService.listByInsideAndFieldNo(true, 1, PageRequest.of(1, 20)));
     }
 
-
+    @GetMapping(value = "/detail/{travelNo}/{contentTypeId}",
+            // consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> listDetail(@PathVariable("travelNo") Long travelNo,
+                                               @PathVariable("contentTypeId") Integer contentTypeId) throws Exception {
+        return ResponseEntity.ok(travelService.listDetail(travelNo, contentTypeId));
+    }
 
 }
