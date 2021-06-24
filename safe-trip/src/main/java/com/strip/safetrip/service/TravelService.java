@@ -25,6 +25,6 @@ public class TravelService {
         list.addAll(requester.getAreaBasedList("Y", "A", 39, gu));
         list.addAll(requester.getAreaBasedList("Y", "A", 12, gu));
 
-        travelRepository.saveList(list);
+        travelRepository.saveAll(list);
     }
 }

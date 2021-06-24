@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface TravelRepository {
 
-    public List<Travel> saveList(List<Travel> list);
+    <S extends Travel> List<S> saveAll(Iterable<S> entities);
 
 }

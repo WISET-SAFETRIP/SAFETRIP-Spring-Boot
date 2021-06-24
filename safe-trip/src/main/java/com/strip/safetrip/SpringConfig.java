@@ -14,17 +14,17 @@ public class SpringConfig {
 
     private final DataSource dataSource;
     private final EntityManager em;
-    public SpringConfig(DataSource dataSource, EntityManager em) {
+    private final TravelRepository travelRepository;
+
+    public SpringConfig(DataSource dataSource, EntityManager em, TravelRepository travelRepository) {
         this.dataSource = dataSource;
         this.em = em;
+        this.travelRepository = travelRepository;
     }
 
     @Bean
     public TravelService travelService() {
-        return new TravelService(travelRepository());
+        return new TravelService(travelRepository);
     }
-    @Bean
-    public TravelRepository travelRepository() {
-        return new JpaTravelRepository(em);
-    }
+
 }
