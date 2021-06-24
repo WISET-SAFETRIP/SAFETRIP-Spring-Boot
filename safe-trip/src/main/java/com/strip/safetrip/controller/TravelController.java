@@ -38,7 +38,10 @@ public class TravelController {
 
     @PostMapping
     public ResponseEntity<?> addByGu() throws Exception {
-        travelService.add(1);
+        for (int i = 1; i < 26; i++) {
+            travelService.add(i);
+        }
+
         return new ResponseEntity<>("{}", HttpStatus.CREATED);
     }
 
@@ -48,4 +51,7 @@ public class TravelController {
     public ResponseEntity<List<Travel>> listByInsideAndFieldNo(@PathVariable("page") Integer page) {
         return ResponseEntity.ok(travelService.listByInsideAndFieldNo(true, 1, PageRequest.of(1, 20)));
     }
+
+
+
 }

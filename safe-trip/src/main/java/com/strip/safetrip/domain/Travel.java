@@ -78,4 +78,5 @@ public class Travel {
     public void setName(String name) {
         this.name = name;
     }
+
 }
