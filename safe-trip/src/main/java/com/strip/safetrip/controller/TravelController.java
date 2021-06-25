@@ -41,7 +41,6 @@ public class TravelController {
         for (int i = 1; i < 26; i++) {
             travelService.add(i);
         }
-
         return new ResponseEntity<>("{}", HttpStatus.CREATED);
     }
 

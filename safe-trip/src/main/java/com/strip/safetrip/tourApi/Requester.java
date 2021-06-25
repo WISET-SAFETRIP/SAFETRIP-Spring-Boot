@@ -54,11 +54,25 @@ public class Requester {
         conn.disconnect();
 
         String jsonString = sb.toString();
-        JSONObject jObject = new JSONObject(jsonString).getJSONObject("response")
-                .getJSONObject("body").getJSONObject("items");
-        JSONArray jArray = jObject.getJSONArray("item");
+        System.out.println(jsonString);
+        JSONObject body = new JSONObject(jsonString).getJSONObject("response")
+                .getJSONObject("body");
 
+        // 여행지 결과가 하나도 없을 경우
+        if (body.get("items").equals("")) {
+            return new ArrayList<Travel>();
+        }
+
+        JSONObject items = body.getJSONObject("items");
         List<Travel> list = new ArrayList<>();
+        JSONArray jArray = new JSONArray();
+
+        // 결과가 하나일 경우
+        if (items.get("item").getClass() == Class.forName("org.json.JSONObject")) {
+            jArray.put(items.getJSONObject("item"));
+        } else {
+            jArray = items.getJSONArray("item");
+        }
 
         for (int i = 0; i < jArray.length(); i++) {
             JSONObject obj = jArray.getJSONObject(i);
@@ -68,6 +82,7 @@ public class Requester {
             t.setName(title);
             t.setTravelNo(id);
             t.setField_no(sigunguCode);
+            t.setContentTypeId(contentTypeId);
             if (contentTypeId == 12) {
                 t.setInside(false);
             } else {

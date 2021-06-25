@@ -24,7 +24,6 @@ public class TravelService {
     }
 
     public void add(int gu) throws Exception {
-        Requester requester = new Requester();
         List<Travel> list = requester.getAreaBasedList("Y", "A", 14, gu);
         list.addAll(requester.getAreaBasedList("Y", "A", 38, gu));
         list.addAll(requester.getAreaBasedList("Y", "A", 39, gu));
@@ -39,5 +38,16 @@ public class TravelService {
 
     public String listDetail(Long travelNo, Integer contentTypeId) throws Exception {
         return requester.getDetail(travelNo, contentTypeId);
+    }
+
+    public static void main(String[] args) throws Exception {
+        Requester requester = new Requester();
+        for (int i = 1; i < 26; i++) {
+            List<Travel> list = requester.getAreaBasedList("Y", "A", 14, i);
+            list.addAll(requester.getAreaBasedList("Y", "A", 38, i));
+            list.addAll(requester.getAreaBasedList("Y", "A", 39, i));
+            list.addAll(requester.getAreaBasedList("Y", "A", 12, i));
+        }
+
     }
 }

@@ -31,6 +31,9 @@ public class Travel {
     @Convert(converter = BooleanTo10Converter.class)
     private boolean inside;
 
+    @Column(name = "content_type_id", nullable = false)
+    private int contentTypeId;
+
     public Long getTravelNo() {
         return travelNo;
     }
@@ -79,4 +82,11 @@ public class Travel {
         this.name = name;
     }
 
+    public int getContentTypeId() {
+        return contentTypeId;
+    }
+
+    public void setContentTypeId(int contentTypeId) {
+        this.contentTypeId = contentTypeId;
+    }
 }
