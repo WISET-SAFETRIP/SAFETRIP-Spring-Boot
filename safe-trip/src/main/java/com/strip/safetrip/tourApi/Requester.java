@@ -109,7 +109,7 @@ public class Requester {
                 .getJSONObject("body");
         JSONObject detailInfo = null;
         if (!body.get("items").equals("")) {
-            detailInfo = body.getJSONObject("items").getJSONObject("item");
+            detailInfo = body.getJSONObject("items");
         }
 
         jsonString = this.getDetailImage(travelNo);
